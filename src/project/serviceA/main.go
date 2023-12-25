@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func a(writer http.ResponseWriter, request *http.Request) {
+func mainHandler(writer http.ResponseWriter, request *http.Request) {
 
 	resp, err := http.Get("http://localhost:8081/")
 	if err != nil {
@@ -30,7 +30,7 @@ func handler() *http.ServeMux {
 
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("/", a)
+	mux.HandleFunc("/", mainHandler)
 
 	return mux
 

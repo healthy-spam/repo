@@ -5,9 +5,9 @@ import (
 	"net/http"
 )
 
-func a(writer http.ResponseWriter, request *http.Request) {
+func mainHandler(writer http.ResponseWriter, request *http.Request) {
 
-	_, err := writer.Write([]byte("Hello World!"))
+	_, err := writer.Write([]byte("I'm data"))
 	if err != nil {
 		fmt.Println("ERROR:", err)
 	}
@@ -19,7 +19,7 @@ func handler() *http.ServeMux {
 
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("/", a)
+	mux.HandleFunc("/", mainHandler)
 
 	return mux
 
